@@ -8,8 +8,8 @@ class LoginPage{
         this.loginButton = page.locator("[type='submit']");
     }
 
-     async goto(url){
-         await this.page.goto(url);
+    async goto(url){
+        await this.page.goto(url);
     }
 
     async login(username, password) {
