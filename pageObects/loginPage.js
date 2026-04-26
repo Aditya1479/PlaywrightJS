@@ -6,6 +6,7 @@ class LoginPage{
         this.username = page.locator("#txtUsername");
         this.password = page.locator("#txtPassword");
         this.loginButton = page.locator("[type='submit']");
+        this.errorMessage = page.locator(".toast-error");
     }
 
     async goto(url){
