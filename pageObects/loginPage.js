@@ -12,6 +12,9 @@ class LoginPage{
         this.errorMessage = page.locator("[action='/login'] p");
         this.loggedInUser= page.locator(".shop-menu b");
         this.deleteAccountBtn= page.locator("[href='/delete_account']");
+        this.signupNameinput=page.locator("[data-qa='signup-name']");
+        this.singupEmailInput=page.locator("[data-qa='signup-email']");
+        this.signUpErrorMessage=page.locator("[action='/signup'] p");
     }
 
     async goto(url){
@@ -30,6 +33,11 @@ class LoginPage{
       await  this.username.fill(username);
        await this.password.fill(password);
        await this.loginButton.click();
+    }
+    
+    async signup(name,email){
+        await this.signupNameinput.fill(name);
+        await this.singupEmailInput.fill(email);
     }
 }
 module.exports={LoginPage};

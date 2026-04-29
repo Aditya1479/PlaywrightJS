@@ -29,7 +29,7 @@ test("login Test Verification with invalid credentials" , async ({page}) => {
     await Assertion.isElementVisible(page,loginPage.errorMessage);
 });
 
-test.only("Test Case 4: Logout User", async ({ page }) => {
+test("Test Case 4: Logout User", async ({ page }) => {
     const pManager = new pageManager(page);
     const loginPage = pManager.getLoginPage();
     const Assertion = new commonAssertion(page);  
@@ -40,7 +40,18 @@ test.only("Test Case 4: Logout User", async ({ page }) => {
     await Assertion.verifyUrl(page,testData.expectedUrl);
     await Assertion.isElementVisible(page,loginPage.logoutBtn);
     const elementText= await new CommonMethods(page).getElementText(loginPage.loggedInUser);
-    await Assertion.verifyText(loginPage.loggedInUser, testData.username);
+    await Assertion.verifyText(loginPage.loggedInUser, elementText);
     await loginPage.clickLogoutBtn();
     await Assertion.verifyUrl(page,"/login");
+});
+
+test("Register User with existing email",async({ page }) => {
+    const pManager = new pageManager(page);
+    const loginPage = pManager.getLoginPage();
+    const Assertion = new commonAssertion(page);  
+    await loginPage.goto("/");
+    await loginPage.clickLoginBtn();
+    await loginPage.signup(testData.username, testData.userEmail);
+    const elementText= await new CommonMethods(page).getElementText(loginPage.signupNameinput);
+    await Assertion.verifyText(loginPage.signupNameinput, elementText);
 });
