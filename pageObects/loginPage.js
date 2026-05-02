@@ -15,6 +15,7 @@ class LoginPage{
         this.signupNameinput=page.locator("[data-qa='signup-name']");
         this.singupEmailInput=page.locator("[data-qa='signup-email']");
         this.signUpErrorMessage=page.locator("[action='/signup'] p");
+        this.homeBtn= page.locator(".fa-home");
     }
 
     async goto(url){
