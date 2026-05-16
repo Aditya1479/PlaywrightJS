@@ -1,5 +1,5 @@
-const { LoginPage } = require("../pageObects/loginPage")
-const { contactUsPage } = require("../pageObects/contactUsPage");
+const { LoginPage } = require("./LoginPage")
+const { contactUsPage } = require("./ContactUsPage");
 
 class pageManager {
     constructor(page) {
