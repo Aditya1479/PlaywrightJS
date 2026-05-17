@@ -1,4 +1,4 @@
-class CommonMethods {
+class commonMethods {
   constructor(page) {
     this.page = page;
   }
@@ -22,4 +22,4 @@ class CommonMethods {
   });
 }
 }
-module.exports = { CommonMethods };
+module.exports = { commonMethods };

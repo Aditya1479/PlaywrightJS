@@ -1,7 +1,9 @@
-class LoginPage{
+const { BasePage } = require("./BasePage");
+class LoginPage extends BasePage{
 
     constructor(page)
-    {
+    {   
+        super(page);
         this.page = page;
         this.loginBtn=page.locator("[href='/login']")
         this.username = page.locator("[data-qa='login-email']");
@@ -16,10 +18,6 @@ class LoginPage{
         this.singupEmailInput=page.locator("[data-qa='signup-email']");
         this.signUpErrorMessage=page.locator("[action='/signup'] p");
         this.homeBtn= page.locator(".fa-home");
-    }
-
-    async goto(url){
-        await this.page.goto(url);
     }
 
     async clickLoginBtn(){

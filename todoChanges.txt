@@ -1,4 +1,4 @@
-1. make a common import of all page files in each test Im creating an object of pages in test.
+1. create a baseclass for login , add .env file make a common import of all page files in each test Im creating an object of pages in test.
 2. Seperate out the login credentials from testData.json it should not push on the github.
 3. upload file path should be change from test.
 4. learn and implement the clear cookies and cookie storage
