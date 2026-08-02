@@ -1,10 +1,5 @@
 {
-  "username": "ADITYA",
-  "userEmail": "adityakunjir12@gmail.com",
-  "password": "Adk@223@3006",
   "expectedUrl": "https://automationexercise.com/",
-  "incorrectEmail": "incorrect@example.com",
-  "incorrectPassword": "Adk@223@3006",
   "subject": "Test Subject",
   "message": "This is a test message."
 }

@@ -5,19 +5,26 @@ class LoginPage extends BasePage{
     {   
         super(page);
         this.page = page;
-        this.loginBtn=page.locator("[href='/login']")
-        this.username = page.locator("[data-qa='login-email']");
-        this.password = page.locator("[data-qa='login-password']");
-        this.loginButton = page.locator("[data-qa='login-button']");
-        this.errorMessage = page.locator(".toast-error");
-        this.logoutBtn=page.locator("[href='/logout']");
-        this.errorMessage = page.locator("[action='/login'] p");
-        this.loggedInUser= page.locator(".shop-menu b");
-        this.deleteAccountBtn= page.locator("[href='/delete_account']");
-        this.signupNameinput=page.locator("[data-qa='signup-name']");
-        this.singupEmailInput=page.locator("[data-qa='signup-email']");
-        this.signUpErrorMessage=page.locator("[action='/signup'] p");
-        this.homeBtn= page.locator(".fa-home");
+
+        // Priority 2: accessibility roles (nav links/buttons have clear semantic names)
+        this.loginBtn = page.getByRole('link', { name: 'Signup / Login' });
+        this.logoutBtn = page.getByRole('link', { name: 'Logout' });
+        this.deleteAccountBtn = page.getByRole('link', { name: 'Delete Account' });
+        this.homeBtn = page.getByRole('link', { name: 'Home' });
+
+        // Priority 1: data-qa is this site's stable test-hook attribute,
+        // mapped to getByTestId() via testIdAttribute in playwright.config.js
+        this.username = page.getByTestId('login-email');
+        this.password = page.getByTestId('login-password');
+        this.loginButton = page.getByTestId('login-button');
+        this.signupNameinput = page.getByTestId('signup-name');
+        this.singupEmailInput = page.getByTestId('signup-email');
+
+        // Priority 5 (last resort): these elements carry no data-qa, id, role or label,
+        // so there is no more stable locator available on this site.
+        this.errorMessage = page.locator("form[action='/login'] p");
+        this.signUpErrorMessage = page.locator("form[action='/signup'] p");
+        this.loggedInUser = page.locator(".shop-menu b");
     }
 
     async clickLoginBtn(){
